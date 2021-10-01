@@ -17,6 +17,7 @@
 /Lab3/obj
 /Lab3/.vs
 /IntroToWebApps5-main
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -367,4 +368,3 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
-FodyWeavers.xsd
