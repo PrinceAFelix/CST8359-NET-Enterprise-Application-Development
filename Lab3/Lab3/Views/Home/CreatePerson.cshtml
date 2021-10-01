@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Person";
+}
+
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+
+<h1>Create Your Favorite Person</h1>
+<form asp-controller="Home" asp-action="DisplayPerson" method="post">
+
+    <table class="createTb">
+        <tr>
+            <td class="createTd">First Name:</td>
+            <td class="createTd"><input type="text" name="firstName" required /></td>
+        </tr>
+        <tr>
+            <td class="createTd">Last Name:</td>
+            <td class="createTd"><input type="text" name="lastName" required/></td>
+        </tr>
+        <tr>
+            <td class="createTd">Age:</td>
+            <td class="createTd"><input type="number" name="age" required/></td>
+        </tr>
+        <tr>
+            <td class="createTd">Email Address:</td>
+            <td class="createTd"><input type="email" name="emailAddress" required/></td>
+        </tr>
+        <tr>
+            <td class="createTd">Date of Birth:</td>
+            <td class="createTd"><input type="date" name="dateOfBirth" required/></td>
+        </tr>
+        <tr>
+            <td class="createTd">Password:</td>
+            <td class="createTd"><input type="password" name="password" required/></td>
+        </tr>
+        <tr>
+            <td class="createTd">Description of Person:</td>
+            <td class="createTd"><input type="text" name="descriptionOfPerson" required/></td>
+        </tr>
+
+    </table>
+    <input id="submitBtn" type="submit" value="Create" />
+
+</form>

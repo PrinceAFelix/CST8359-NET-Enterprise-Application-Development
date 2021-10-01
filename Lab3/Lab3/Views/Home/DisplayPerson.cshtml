@@ -1,0 +1,37 @@
+﻿
+@model Lab3.Models.Person
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Display Person";
+}
+
+
+<h1>Your Favorite Person</h1>
+
+<table class="createTb">
+    <tr>
+        <td class="createTd">First Name:</td>
+        <td class="createTd">@Model.firstName</td>
+    </tr>
+    <tr>
+        <td class="createTd">Last Name:</td>
+        <td class="createTd">@Model.lastName</td>
+    </tr>
+    <tr>
+        <td class="createTd">Age:</td>
+        <td class="createTd">@Model.age</td>
+    </tr>
+    <tr>
+        <td class="createTd">Email Address:</td>
+        <td class="createTd">@Model.emailAddress</td>
+    </tr>
+    <tr>
+        <td class="createTd">Date of Birth:</td>
+        <td class="createTd">@Model.dob</td>
+    </tr>
+    <tr>
+        <td class="createTd">Description of Person:</td>
+        <td class="createTd">@Model.dop</td>
+    </tr>
+</table>
