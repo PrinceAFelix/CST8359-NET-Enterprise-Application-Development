@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Error";
+}
+
+<h1>An error occured while processing your request, Please Try Again</h1>
+
+<form asp-controller="Home" asp-action="Razor" method="post">
+    <Table>
+        <tr>
+            <td><input style="width: 120px" id="submitBtn" type="submit" value="Try Again!" /></td>
+        </tr>
+    </Table>
+</form>

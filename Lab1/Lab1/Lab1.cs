@@ -101,9 +101,6 @@ namespace Lab1
                     Console.WriteLine("Argument Exception while reading menu");
                 }
 
-
-
-
             } while (loop == 1);
 
 

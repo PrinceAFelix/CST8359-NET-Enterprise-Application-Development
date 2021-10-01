@@ -13,7 +13,10 @@
 /Lab1/bin
 /Lab1/obj
 /Lab1/.vs
-
+/Lab3/bin
+/Lab3/obj
+/Lab3/.vs
+/IntroToWebApps5-main
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
