@@ -39,25 +39,33 @@
 
             string[] b = { "bottle", "bottles", "And if one green bottle should accidentally fall," };
 
-            string word = "";
+            string word = b[1];
+
             while (numOfBottles > 0)
             {
 
-                if (numOfBottles >= 2)
-                    word = b[1];
-                else
-                    word = b[0];
 
+               
                 <tr>@numOfBottles green @word standing on the wall,</tr>
                 <br />
                 <tr>@numOfBottles green @word standing on the wall,</tr>
                 <br />
                 <tr>@b[2]</tr>
                 <br />
-                <tr>There'll be  @(numOfBottles - 1) green @word on the wall.</tr>
+                 numOfBottles--;
+
+                if (numOfBottles >= 2)
+                    word = b[1];
+                else
+                    word = b[0];
+
+                <tr>There'll be @numOfBottles green @word on the wall.</tr>
                 <br />
                 <br />
-                numOfBottles--;
+               
+
+                
+
             }
         }
 
