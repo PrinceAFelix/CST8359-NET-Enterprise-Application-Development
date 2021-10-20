@@ -2,6 +2,7 @@
     background-color: #d8d8d8;
     margin: 0;
     padding: 0;
+    min-width:1140px;
     overflow: hidden;
     font-family: Calibri;
 }
@@ -41,6 +42,7 @@ header {
     background-color: #626262;
     border: 1px solid black;
     text-align: center;
+    position: fixed;
     overflow: hidden;
 }
 li {
@@ -83,6 +85,7 @@ li {
     height: 100%;
     float: left;
     overflow: auto;
+    top: 20%;
 }
 
 footer {
@@ -93,7 +96,7 @@ footer {
     height: 80px;
     border: 1px solid black;
     padding-top: 20px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     overflow: hidden;
