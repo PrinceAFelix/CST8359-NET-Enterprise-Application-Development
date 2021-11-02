@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="menu">
+        @Html.ActionLink("Home", "Index")
+        @Html.ActionLink("Show the Song!", "Razor")
+        @Html.ActionLink("Persons", "CreatePerson")
+        <a href="http://aspnetintro-lab2.azurewebsites.net/" target="_blank"> Lab 2</a>
+
+    </div>
+
+    <header>
+        <h1>Welcome to My Lab 3</h1>
+        My Name is: Prince Adrianne Felix<br />
+    </header>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <p>
+            <b>
+                Student Number: 040933287<br />
+                Student E-Mail Address: feli0041@algonquin.com<br /><br />
+            </b>
+        </p>
+    </footer>
+</body>
+</html>

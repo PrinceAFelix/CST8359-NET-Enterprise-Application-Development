@@ -13,7 +13,15 @@
 /Lab1/bin
 /Lab1/obj
 /Lab1/.vs
+<<<<<<< HEAD
 
+=======
+/Lab3/bin
+/Lab3/obj
+/Lab3/.vs
+/Lab3/Properties
+/IntroToWebApps5-main
+>>>>>>> lab3
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -364,4 +372,8 @@ MigrationBackup/
 .ionide/
 
 # Fody - auto-generated XML schema
+<<<<<<< HEAD
 FodyWeavers.xsd
+=======
+FodyWeavers.xsd
+>>>>>>> lab3

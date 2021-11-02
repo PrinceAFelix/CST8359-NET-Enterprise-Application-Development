@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Count";
+
+}
+
+<style>
+    .body {
+        display: inline-block;
+        position: relative;
+        float: left;
+        margin-bottom: 16%;
+        height: auto;
+        width: auto;
+        float: left;
+        overflow: auto;
+    }
+</style>
+
+
+
+
+<div class="body">
+    <form asp-controller="Home" asp-action="Razor" method="post">
+        <Table>
+            <tr>
+                <td><input style="width: 120px" id="submitBtn" type="submit" value="Play Again!" /></td>
+            </tr>
+        </Table>
+    </form>
+    <br />
+    <table>
+
+
+        @{
+            int numOfBottles = int.Parse(@Context.Session.GetString("numberOfBottles"));
+
+            string[] b = { "bottle", "bottles", "And if one green bottle should accidentally fall," };
+
+            string word = b[1];
+
+            while (numOfBottles > 0)
+            {
+
+
+               
+                <tr>@numOfBottles green @word standing on the wall,</tr>
+                <br />
+                <tr>@numOfBottles green @word standing on the wall,</tr>
+                <br />
+                <tr>@b[2]</tr>
+                <br />
+                 numOfBottles--;
+
+                if (numOfBottles >= 2)
+                    word = b[1];
+                else
+                    word = b[0];
+
+                <tr>There'll be @numOfBottles green @word on the wall.</tr>
+                <br />
+                <br />
+               
+
+                
+
+            }
+        }
+
+    <tr>There is no green bottle standing on the wall.</tr>
+
+    </table>
+</div>
