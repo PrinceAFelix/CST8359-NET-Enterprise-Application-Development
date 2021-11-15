@@ -1,0 +1,36 @@
+﻿@page
+@model Lab5.Pages.AnswerImages.CreateModel
+
+<h1>Upload</h1>
+<h4>Answer questions via image upload</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <div class="custom-radio">
+                    <input type="radio" name="Question" value="a" />
+                    What will the computers look like in 20 years?
+                    <br />
+                    <input type="radio" name="Question" value="b" />
+                    What will the earth look like in 20 years?
+                </div>
+                <div class="btn btn-sm float-left">
+                    <input asp-for="FileUpload.FormFile" type="file">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Upload Now" class="btn btn-primary" />
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

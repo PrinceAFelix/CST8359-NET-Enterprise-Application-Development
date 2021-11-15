@@ -1,0 +1,43 @@
+﻿@page
+@model Lab5.Pages.AnswerImages.IndexModel
+
+<h1>Index</h1>
+<p>
+    <a asp-page="Create">Upload New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnswerImage[0].FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnswerImage[0].Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnswerImage[0].Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AnswerImage) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AnswerImageId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AnswerImageId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AnswerImageId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
