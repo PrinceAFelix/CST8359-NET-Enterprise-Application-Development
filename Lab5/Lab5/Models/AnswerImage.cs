@@ -38,6 +38,7 @@ namespace Lab5.Models
         }
 
         [Required]
+        [DisplayName("Question")]
         public Question Question { get; set; }
     }
 

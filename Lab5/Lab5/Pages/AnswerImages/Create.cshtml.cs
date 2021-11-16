@@ -40,12 +40,13 @@ namespace Lab5.Pages.AnswerImages
         public AnswerImage AnswerImage { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync(Question q, IFormFile file)
+        public async Task<IActionResult> OnPostAsync(Question question, IFormFile file)
         {
 
             BlobContainerClient containerClient;
 
-            if(q == Question.earth)
+            
+            if(question == Question.earth)
             {
                 containerName = earthContainerName;
             }
@@ -54,11 +55,12 @@ namespace Lab5.Pages.AnswerImages
                 containerName = computerContainerName;
             }
 
+            //Console.WriteLine("Question: " + question + "\nContainer: " + containerName);
 
             try
             {
 
-                containerClient = await _blobServiceClient.CreateBlobContainerAsync(earthContainerName);
+                containerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
 
                 // Give access to public
                 containerClient.SetAccessPolicy(Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer);
@@ -71,7 +73,7 @@ namespace Lab5.Pages.AnswerImages
             try
             {
                 string randomFileName = Path.GetRandomFileName();
-                var blockBlob = containerClient.GetBlobClient(randomFileName);
+                var blockBlob = containerClient.GetBlobClient(file.FileName);
 
                 if (await blockBlob.ExistsAsync())
                 {
@@ -95,8 +97,8 @@ namespace Lab5.Pages.AnswerImages
                 var image = new AnswerImage
                 {
                     Url = blockBlob.Uri.AbsoluteUri,
-                    FileName = randomFileName,
-                    Question = q
+                    FileName = file.FileName,
+                    Question = question
                 };
 
                 _context.AnswerImages.Add(image);

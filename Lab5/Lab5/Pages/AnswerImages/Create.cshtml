@@ -1,6 +1,11 @@
 ﻿@page
 @model Lab5.Pages.AnswerImages.CreateModel
 
+@{
+
+    ViewData["Title"] = "Create";
+}
+
 <h1>Upload</h1>
 <h4>Answer questions via image upload</h4>
 <hr />
@@ -9,20 +14,20 @@
         <form enctype="multipart/form-data" method="post">
             <div class="form-group">
                 <div class="custom-radio">
-                    <input type="radio" name="Question" value="a" />
+                    <input type="radio" name="question" value="computer" />
                     What will the computers look like in 20 years?
                     <br />
-                    <input type="radio" name="Question" value="b" />
+                    <input type="radio" name="question" value="earth" />
                     What will the earth look like in 20 years?
                 </div>
                 <div class="btn btn-sm float-left">
-                    <input asp-for="FileUpload.FormFile" type="file">
+                    <input name="file" type="file">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Upload Now" class="btn btn-primary" />
                 </div>
             </div>
-            
+
         </form>
     </div>
 </div>
