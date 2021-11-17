@@ -13,15 +13,31 @@
 /Lab1/bin
 /Lab1/obj
 /Lab1/.vs
-<<<<<<< HEAD
-
-=======
 /Lab3/bin
 /Lab3/obj
 /Lab3/.vs
 /Lab3/Properties
 /IntroToWebApps5-main
->>>>>>> lab3
+
+/lab4/Lab4.sln
+/Lab4/bin
+/Lab4/obj
+/Lab4/.vs
+/Lab4/Properties
+/Lab4/appsettings.json
+/Lab4/appsettings.Development.json
+/lab4/Lab4/Properties/ServiceDependencies
+
+/Lab5/Lab5.sln
+/Lab5/bin
+/Lab5/obj
+/Lab5/.vs
+/Lab5/Properties
+/Lab5/appsettings.json
+/Lab5/appsettings.Development.json
+/Lab5/Properties/ServiceDependencies/aspnet-lab5 - Web Deploy/
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
