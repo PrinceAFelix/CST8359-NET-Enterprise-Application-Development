@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Lab5.Models;
+using Lab5.Data;
 
 
 namespace Lab5.Pages.AnswerImages
@@ -21,7 +22,7 @@ namespace Lab5.Pages.AnswerImages
         private readonly string computerContainerName = "computerimages";
         private string containerName;
 
-        private readonly Lab5.Data.AnswerImageDataContext _context;
+        private readonly AnswerImageDataContext _context;
 
         public CreateModel(Lab5.Data.AnswerImageDataContext context, BlobServiceClient blobServiceClient)
         {
