@@ -39,15 +39,15 @@ namespace Lab6.Controllers
             return Ok(await _context.Students.ToListAsync());
         }
 
-        // GET: Cars/d2cab0c9-7e94-409e-2b9a-08d88428ae4a
+        // GET: Students/d2cab0c9-7e94-409e-2b9a-08d88428ae4a
         /// <summary>
-        /// Get a Car.
+        /// Get a Student.
         /// </summary>
         /// <param id="id"></param>
-        /// <returns>A Car</returns>
-        /// <response code="201">Returns a collection of Cars</response>
+        /// <returns>A Student</returns>
+        /// <response code="201">Returns a collection of Students</response>
         /// <response code="400">If the id is malformed</response>      
-        /// <response code="404">If the Car is null</response>      
+        /// <response code="404">If the Student is null</response>      
         /// <response code="500">Internal error</response>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -64,23 +64,24 @@ namespace Lab6.Controllers
             return Ok(student);
         }
 
-        // POST: Cars
+        // POST: Students
         /// <summary>
-        /// Creates a Car.
+        /// Creates a Student.
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /Cars
+        ///     POST /Students
         ///     {
-        ///        "make": "make",
-        ///        "price": 0
+        ///        "FirstName": "fname",
+        ///        "LastName": "lname",
+        ///        "Program": "program"
         ///     }
         ///
         /// </remarks>
-        /// <returns>A newly created Car</returns>
-        /// <response code="201">Returns the newly created Car</response>
-        /// <response code="400">If the Car is malformed</response>      
+        /// <returns>A newly created Student</returns>
+        /// <response code="201">Returns the newly created Student</response>
+        /// <response code="400">If the Student or id is malformed</response>      
         /// <response code="500">Internal error</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -101,13 +102,67 @@ namespace Lab6.Controllers
             return CreatedAtAction(nameof(GetById), new { id = student.ID }, student);
         }
 
-
-        // DELETE: Cars/5
+        // PUT: Student/5
         /// <summary>
-        /// Deletes a Car.
+        /// Upserts a Student.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /Students
+        ///     {
+        ///        "FirstName": "fname",
+        ///        "lastName": "lname",
+        ///        "program": "program"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param id="id"></param>
+        /// <returns>An upserted Student</returns>
+        /// <response code="200">Returns the updated Student</response>
+        /// <response code="201">Returns the newly created Student</response>
+        /// <response code="400">If the Student or id is malformed</response>      
+        /// <response code="500">Internal error</response>
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<Student>> Upsert(Guid id, [Bind("Make,Price")] StudentBase studentBase)
+        {
+            Student student = new Student
+            {
+                FirstName = studentBase.FirstName,
+                LastName = studentBase.LastName,
+                Program = studentBase.Program
+
+            };
+
+            if (!StudentExist(id))
+            {
+                return NotFound();
+            }
+
+            Student dbStudent = await _context.Students.FindAsync(id);
+            dbStudent.FirstName = student.FirstName;
+            dbStudent.LastName = student.LastName;
+            dbStudent.Program = student.Program;
+
+            _context.Update(dbStudent);
+            await _context.SaveChangesAsync();
+
+            return Ok(dbStudent);
+        }
+
+
+
+
+        // DELETE: Students/5
+        /// <summary>
+        /// Deletes a Student.
         /// </summary>
         /// <param id="id"></param>
-        /// <response code="202">Car is deleted</response>
+        /// <response code="202">Student is deleted</response>
         /// <response code="400">If the id is malformed</response>      
         /// <response code="500">Internal error</response>
         [HttpDelete("{id}")]
@@ -122,7 +177,10 @@ namespace Lab6.Controllers
             return Accepted();
         }
 
-
+        private bool StudentExist(Guid id)
+        {
+            return _context.Students.Any(e => e.ID == id);
+        }
 
     }
 }
