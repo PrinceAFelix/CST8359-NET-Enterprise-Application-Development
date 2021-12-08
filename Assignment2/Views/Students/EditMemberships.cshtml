@@ -1,0 +1,55 @@
+﻿@model Assignment2.Models.ViewModels.CommunityViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Membership";
+}
+
+
+<h1>Edit</h1>
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Full Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Display(Model.Students.First().FirstName)
+        </dd>
+    </dl>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <table id="membershipsTable">
+            @foreach (var item in Model.Communities)
+            {
+
+            bool addCom = Model.CommunityMemberships.Where(i => i.CommunityId == item.Id).Count() > 0;
+
+            if (!addCom)
+            {
+            <tr>
+                <td>@item.Title </td>
+                <td> <a asp-action="AddMemberships" asp-route-studentId="@Model.Students.First().Id" asp-route-communityId="@item.Id">&nbsp;Register</a></td>
+            </tr> }
+
+            else
+            {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    <a asp-action="RemoveMemberships" asp-route-studentId="@Model.Students.First().Id" asp-route-communityId="@item.Id">&nbsp;Unregister</a>
+                </td>
+            </tr>}
+
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
