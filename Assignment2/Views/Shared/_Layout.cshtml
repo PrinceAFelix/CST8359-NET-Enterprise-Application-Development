@@ -4,13 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Students Communities</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bonus.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-header-colour border-bottom box-shadow mb-3">
+            <i class="fa fa-github" style="font-size:36px; color:black"></i>
+            <div class="dropdownnav">
+
+                <button class="dropbtn">
+                    <h8>Github</h8>
+                </button>
+                <div class="dropdown-content dropdown-content-github">
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/Lab1" target="_blank">Lab 1</a>
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/Lab3" target="_blank">Lab 3</a>
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/lab4" target="_blank">Lab 4</a>
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/Lab5" target="_blank">Lab 5</a>
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/Lab6" target="_blank">Lab 6</a>
+                    <a href="https://github.com/PrinceAFelix/CST8359/tree/main/Assignment2" target="_blank">Asmt 2</a>
+
+
+                </div>
+            </div>
+            <div class="dropdownnav">
+                <button class="dropbtn">
+                    <h8>Previous Labs</h8>
+                </button>
+                <div class="dropdown-content">
+                    <a href="http://aspnetintro-lab2.azurewebsites.net/" target="_blank">Lab 2</a>
+                    <a href="http://aspnet-lab3.azurewebsites.net/" target="_blank">Lab 3</a>
+                    <a href="http://aspnet-lab4.azurewebsites.net/" target="_blank">Lab 4</a>
+                    <a href="http://aspnet-lab5.azurewebsites.net/" target="_blank">Lab 5</a>
+                    <a href="http://aspnet-lab6.azurewebsites.net/" target="_blank">Lab 6</a>
+
+                </div>
+            </div>
+            <div class="container nav-link-style">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">SchoolCommunity</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +60,7 @@
                             <a class="nav-link text-dark" asp-controller="Communities" asp-action="Index">Communities</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
@@ -38,6 +71,11 @@
         </main>
     </div>
 
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Prince Felix
+        </div>
+    </footer>
 
     @RenderSection("Scripts", required: false)
 </body>

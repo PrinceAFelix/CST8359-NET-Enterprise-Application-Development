@@ -29,7 +29,7 @@ namespace Assignment2.Controllers
                 .Include(i => i.CommunityMembership)
                     .ThenInclude(i => i.Community)
                 .AsNoTracking()
-                .OrderBy(i => i.FirstName)
+                .OrderBy(i => i.LastName)
                 .ToListAsync();
 
             if (id != null)
@@ -157,7 +157,8 @@ namespace Assignment2.Controllers
 
             communityViewModel.CommunityMemberships = await _context.CommunityMemberships.Where(i => i.StudentId == id).ToListAsync();
             communityViewModel.Students = await _context.Students.Where(i => i.Id == id).ToListAsync();
-            communityViewModel.Communities = await _context.Communities.ToListAsync();
+            communityViewModel.Communities = await _context.Communities.OrderBy(i => i.Title)
+                .ToListAsync();
 
             return View(communityViewModel);
         }
