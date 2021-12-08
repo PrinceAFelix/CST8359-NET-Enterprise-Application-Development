@@ -40,7 +40,6 @@ namespace Assignment2.Controllers
             }
             return View(viewModel);
 
-            //return View(await _context.Students.ToListAsync());
         }
 
         // GET: Students/Details/5

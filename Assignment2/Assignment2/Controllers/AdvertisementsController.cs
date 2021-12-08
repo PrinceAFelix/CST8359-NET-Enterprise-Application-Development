@@ -38,25 +38,6 @@ namespace Assignment2.Controllers
             return View(viewModel);
         }
 
-        // GET: Advertisements/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var advertisement = await _context.Advertisements
-                .Include(a => a.Community)
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (advertisement == null)
-            {
-                return NotFound();
-            }
-
-            return View(advertisement);
-        }
-
         // GET: Advertisements/Create
         public IActionResult Create(string ID, string Title)
         {
@@ -65,9 +46,6 @@ namespace Assignment2.Controllers
             viewModel.CommunityTitle = Title;
 
             return View(viewModel);
-
-            /* ViewData["CommunityId"] = new SelectList(_context.Communities, "Id", "Id");
-             return View();*/
         }
 
         // POST: Advertisements/Create
@@ -157,17 +135,44 @@ namespace Assignment2.Controllers
         // POST: Advertisements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            var advertisement = await _context.Advertisements.FindAsync(id);
-            _context.Advertisements.Remove(advertisement);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        private bool AdvertisementExists(int id)
-        {
-            return _context.Advertisements.Any(e => e.id == id);
+            var adimage = await _context.Advertisements.FindAsync(id);
+
+            if (adimage != null)
+            {
+                BlobContainerClient containerClient;
+
+                try
+                {
+                    containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
+                }
+                catch (RequestFailedException)
+                {
+                    return RedirectToPage("Error");
+                }
+
+                try
+                {
+                    var blockBlob = containerClient.GetBlobClient(adimage.FileName);
+                    if (await blockBlob.ExistsAsync())
+                    {
+                        await blockBlob.DeleteAsync();
+                    }
+                    _context.Advertisements.Remove(adimage);
+                    await _context.SaveChangesAsync();
+                }
+                catch (RequestFailedException)
+                {
+                    return RedirectToPage("Error");
+                }
+            }
+            return RedirectToAction("Index", new { ID = adimage.CommunityId });
         }
     }
 }
