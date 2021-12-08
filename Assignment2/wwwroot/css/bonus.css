@@ -55,7 +55,7 @@
   margin: 0 auto; 
 }
 
-.navbar a:hover, .dropdownnav:hover .dropbtn {
+.navbar .dropdownnav:hover .dropbtn {
   background-color: #808080;
   border-radius: 10px 10px 0px 0px;
 }
