@@ -9,6 +9,7 @@ using Assignment2.Data;
 using Assignment2.Models.ViewModels;
 using Assignment2.Models;
 
+
 namespace Assignment2.Controllers
 {
     public class CommunitiesController : Controller
@@ -33,7 +34,7 @@ namespace Assignment2.Controllers
                 .OrderBy(i => i.Title)
                 .ToListAsync();
 
-            if(id != null)
+            if (id != null)
             {
                 ViewData["CommunityId"] = id;
                 viewModel.CommunityMemberships = viewModel.Communities.Where(
@@ -148,6 +149,12 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
+            //Checks if the Community have ads
+            if (_context.Advertisements.Any(e => e.CommunityId == id))
+            {
+                ViewBag.hasAds = true;
+            }
+
             return View(community);
         }
 
@@ -166,5 +173,7 @@ namespace Assignment2.Controllers
         {
             return _context.Communities.Any(e => e.Id == id);
         }
+
+
     }
 }

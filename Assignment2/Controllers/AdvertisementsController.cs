@@ -25,7 +25,7 @@ namespace Assignment2.Controllers
         {
             _blobServiceClient = blobServiceClient;
             _context = context;
-            
+
         }
 
         // GET: Advertisements
@@ -53,16 +53,17 @@ namespace Assignment2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm]FileInputViewModel myFile)
+        public async Task<IActionResult> Create([FromForm] FileInputViewModel myFile)
         {
-      
+
             BlobContainerClient containerClient;
 
             try
             {
                 containerClient = await _blobServiceClient.CreateBlobContainerAsync(containerName);
                 containerClient.SetAccessPolicy(Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer);
-            }catch (RequestFailedException)
+            }
+            catch (RequestFailedException)
             {
                 containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
             }
@@ -111,7 +112,7 @@ namespace Assignment2.Controllers
         }
 
 
-       
+
 
         // GET: Advertisements/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -174,5 +175,11 @@ namespace Assignment2.Controllers
             }
             return RedirectToAction("Index", new { ID = adimage.CommunityId });
         }
+
+        private bool AdvertisementExist(int id)
+        {
+            return _context.Advertisements.Any(e => e.id == id);
+        }
     }
 }
+

@@ -9,6 +9,7 @@ namespace Assignment2.Models.ViewModels
     {
         public IEnumerable<Student> Students { get; set; }
         public IEnumerable<Community> Communities { get; set; }
+        public IEnumerable<Advertisement> Advertisements { get; set; }
         public IEnumerable<CommunityMembership> CommunityMemberships { get; set; }
     }
 }

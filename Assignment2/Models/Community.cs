@@ -37,6 +37,7 @@ namespace Assignment2.Models
 
         public ICollection<CommunityMembership> CommunityMembership { get; set; }
 
+
         public static implicit operator Community(List<Community> v)
         {
             throw new NotImplementedException();

@@ -26,19 +26,21 @@
         </dd>
     </dl>
 
-    @{
-        if (Model.Equals(Url))
-        {
-            <p>You cannot delete a community untill all associated advertisements are deleted</p>
-        }
-        else
-        {
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
-                <a asp-action="Index">Back to List</a>
-            </form>
-        }
+    @if (ViewBag.hasAds == true)
+    {
+        <p>You cannot delete a community until all associated advertisements are deleted</p>
+        <br />
+        <a asp-action="Index">Back to List</a>
+
     }
+    else
+    {
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    }
+
 
 </div>
